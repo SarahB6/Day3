@@ -23,14 +23,25 @@ public class ATMCode
    //If there is a balance, throw an error mentioning the need to withdraw $$$ before closing
    public void closeAccount(String userID)
    {
-        
+        if(!accountMap.containsKey(userID))
+        {
+            throw new IllegalArgumentException("This account doesn't exist.");
+        }
+        else if(accountMap.get(userID)>0)
+        {
+            throw new IllegalArgumentException("This account still has money. Withdraw the rest of it!!"); 
+        }
+        else
+        {
+            accountMap.remove(userID);
+        }
    }
 
    //output the exact account value
    //throw an error if the account doesn't exist
    public double checkBalance(String userID)
    {
-
+    
    }
 
    //return a double of the deposited amount or throw exception
@@ -38,7 +49,7 @@ public class ATMCode
    //If not, throw exception saying they can't withdraw money
    public double depositMoney(String userID, double amount)
    {
-
+        
    }
 
    //return the double of the returned amount or throw an exception
