@@ -83,6 +83,16 @@ public class ATMCode
    //withdraw moeny from the "from" account deposit money into the to account
    public boolean transferMoney(String fromAccount, String toAccount, double amount)
    {
+    if(!accountMap.containsKey(fromAccount))
+    {
+        return false;
+    }
+    if(!accountMap.containsKey(toAccount))
+    {
+        return false;
+    }
+    withdrawMoney(fromAccount, amount);
+    depositMoney(toAccount, amount);
     return true;
    }
    
