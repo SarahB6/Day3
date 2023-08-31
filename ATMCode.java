@@ -49,11 +49,16 @@ public class ATMCode
    }
 
    //return a double of the deposited amount or throw exception
-   //if the account ecists increase the amount of the users account value
+   //if the account exists increase the amount of the users account value
    //If not, throw exception saying they can't withdraw money
    public double depositMoney(String userID, double amount)
    {
-        
+       if(!accountMap.containsKey(userID))
+        {
+            throw new IllegalArgumentException("This account doesn't exist.");
+        } 
+        accountMap.put(userID, accountMap.get(userID)+amount);
+        return amount;
    }
 
    //return the double of the returned amount or throw an exception
@@ -62,14 +67,14 @@ public class ATMCode
    //if not, throw exception
    public double withdrawMoney(String userID, double amount)
    {
-
+    return 0;
    }
 
    //return a boolean with if the transfer was successful or not
    //withdraw moeny from the "from" account deposit money into the to account
    public boolean transferMoney(String fromAccount, String toAccount, double amount)
    {
-
+    return true;
    }
    
    //If the file already exists, delete the current file 
@@ -81,3 +86,4 @@ public class ATMCode
    {
 
    }
+}
