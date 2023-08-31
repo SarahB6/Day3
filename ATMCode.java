@@ -104,9 +104,9 @@ public class ATMCode
    //write a file named "AccountAudit.txt"
    //write out each account email and value on subsequent new lines
    //closes the file after writing
-   public void audit(String fileName) throws IOException
+   public void audit() throws IOException
     {
-        BufferedWriter bw = new BufferedWriter(new FileWriter( fileName));
+        BufferedWriter bw = new BufferedWriter(new FileWriter("AccountAudit.txt"));
         for(String key:accountMap.keySet())
         {
             bw.write(key + "\n");
