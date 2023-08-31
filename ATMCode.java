@@ -1,3 +1,6 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -101,8 +104,15 @@ public class ATMCode
    //write a file named "AccountAudit.txt"
    //write out each account email and value on subsequent new lines
    //closes the file after writing
-   public void audit()
-   {
+   public void audit(String fileName) throws IOException
+    {
+        BufferedWriter bw = new BufferedWriter(new FileWriter( fileName));
+        for(String key:accountMap.keySet())
+        {
+            bw.write(key + "\n");
+        }
+        bw.close();
 
-   }
+    }
 }
+
