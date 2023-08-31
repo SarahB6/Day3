@@ -1,17 +1,29 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class ATMCode 
 {
+
+    private Map <String, Double> accountMap = new HashMap<String, Double>();
     //if the user does not exist create a new account for 
     //the user and store their deposit amount
    public void openAccount(String userID, double amount)
    {
-
+        if(accountMap.containsKey(userID))
+        {
+            throw new IllegalArgumentException("The account already exists.");
+        }
+        else
+        {
+            accountMap.put(userID, amount);
+        }
    }
 
    // if there is no balance, delete the account entry
    //If there is a balance, throw an error mentioning the need to withdraw $$$ before closing
    public void closeAccount(String userID)
    {
-
+        
    }
 
    //output the exact account value
