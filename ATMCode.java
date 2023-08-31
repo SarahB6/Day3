@@ -67,7 +67,16 @@ public class ATMCode
    //if not, throw exception
    public double withdrawMoney(String userID, double amount)
    {
-    return 0;
+        if(!accountMap.containsKey(userID))
+        {
+            throw new IllegalArgumentException("This account doesn't exist.");
+        } 
+        if(accountMap.get(userID) < amount)
+        {
+            throw new IllegalArgumentException("You don't have enough money :(");
+        }
+        accountMap.put(userID, accountMap.get(userID)-amount);
+        return amount;
    }
 
    //return a boolean with if the transfer was successful or not
