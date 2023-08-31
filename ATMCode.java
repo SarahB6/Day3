@@ -41,7 +41,11 @@ public class ATMCode
    //throw an error if the account doesn't exist
    public double checkBalance(String userID)
    {
-    
+     if(!accountMap.containsKey(userID))
+        {
+            throw new IllegalArgumentException("This account doesn't exist.");
+        }
+        return accountMap.get(userID);
    }
 
    //return a double of the deposited amount or throw exception
